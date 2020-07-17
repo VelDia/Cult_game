@@ -1,9 +1,12 @@
 # Main file
 
-from Greeting.py import greeting
+from Greeting import greeting
 from random import choice
 
 class Person:
-	def sayHi(self):
+	def __init__(self, name):
+		self.name = name
 
-		print(choice(greeting))
+	def sayHi(self):
+		print(choice(greeting), self.name)
+
