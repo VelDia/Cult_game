@@ -20,7 +20,8 @@ class Person:
 	def __del__(self):	# delete object and decrese amount of believers
 		Person.believers -= 1
 
-	def say_Hi(self):	# type of greeting for NPC
+	# NPC phrases 
+	def say_Hi(self):	
 		print(choice(NPC_greeting), self.name)
 
 	def say_Answear(self):
@@ -29,7 +30,7 @@ class Person:
 	def say_Bye(self):
 		print(choice(NPC_final_answear), self.name)
 
-
+# player phrases
 def say_Hello():
 	print(choice(Character_greeting))
 
