@@ -1,6 +1,7 @@
 # Main file
 
-from Phrases import*
+from NPC_Phrases import*
+from Character_Phrases import*
 from random import choice
 
 
@@ -20,12 +21,20 @@ class Person:
 		Person.believers -= 1
 
 	def say_Hi(self):	# type of greeting for NPC
-		print(choice(greeting), self.name)
+		print(choice(NPC_greeting), self.name)
 
 	def say_Answear(self):
-		print(choice(answear), self.name)
+		print(choice(NPC_answear), self.name)
 
 	def say_Bye(self):
-		print(choice(answear), self.name)
+		print(choice(NPC_final_answear), self.name)
 
-	
+
+def say_Hello():
+	print(choice(Character_greeting))
+
+def say_Recruitment():
+	print(choice(Character_recruitment))
+
+def say_Finish_Him():
+	print(choice(Character_FINISH_HIM_phrase))
