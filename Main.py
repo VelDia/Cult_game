@@ -1,15 +1,14 @@
 # Main file
 
-from NPC_Phrases import*
-from Character_Phrases import*
+from npc_phrases import*
+from character_phrases import*
 from random import choice
-
 
 class Person:
 
-	believers = 0	# our believers
+	believers = 0
 
-	def __init__(self, name, age, gender, charisma, motivation): # with initializing person passing its parameters
+	def __init__(self, name, age, gender, charisma, motivation):
 		self.name = name
 		self.age = age
 		self.gender = gender
@@ -17,25 +16,25 @@ class Person:
 		self.motivation = motivation
 		Person.believers += 1
 		
-	def __del__(self):	# delete object and decrese amount of believers
+	def __del__(self):
 		Person.believers -= 1
 
-	# NPC phrases 
-	def say_Hi(self):	
-		print(choice(NPC_greeting), self.name)
+	
+	def say_hi(self):	
+		print(choice(npc_greeting), self.name)
 
-	def say_Answear(self):
-		print(choice(NPC_answear), self.name)
+	def say_answear(self):
+		print(choice(npc_answear), self.name)
 
-	def say_Bye(self):
-		print(choice(NPC_final_answear), self.name)
+	def say_bye(self):
+		print(choice(npc_final_answear), self.name)
 
-# player phrases
-def say_Hello():
-	print(choice(Character_greeting))
 
-def say_Recruitment():
-	print(choice(Character_recruitment))
+def greeting():
+	print(choice(character_greeting))
 
-def say_Finish_Him():
-	print(choice(Character_FINISH_HIM_phrase))
+def recruitment():
+	print(choice(character_recruitment))
+
+def finish_phrase():
+	print(choice(character_finish_phrase))

@@ -1,5 +1,5 @@
 # File with NPC phrases
 
-NPC_greeting = ['Hello', 'Main respecturen', 'Hi MF']
-NPC_answear = ['Yes', 'No']
-NPC_final_answear = ['IDK', 'Fuck off', 'OK']
+npc_greeting = ['Hello', 'Main respecturen', 'Hi MF']
+npc_answear = ['Yes', 'No']
+npc_final_answear = ['IDK', 'Fuck off', 'OK']
