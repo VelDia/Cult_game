@@ -1,40 +1,33 @@
 # Main file
 
-from npc_phrases import*
-from character_phrases import*
-from random import choice
+from NPC import*
+from npc_data import*
+from random import randint, choice
 
-class Person:
+# Creates random NPC
+def createNPC():
 
-	believers = 0
+	gender = randint(0,1)
+	if gender == 0:
+		name = choice(npcMaleNames)
+	else:
+		name = choice(npcFemaleNames)
 
-	def __init__(self, name, age, gender, charisma, motivation):
-		self.name = name
-		self.age = age
-		self.gender = gender
-		self.charisma = charisma
-		self.motivation = motivation
-		Person.believers += 1
-		
-	def __del__(self):
-		Person.believers -= 1
+	age = randint(18, 75)
+	charisma = randint(0, 10)
+	motivation = randint(0, 10)
 
-	
-	def say_hi(self):	
-		print(choice(npc_greeting), self.name)
+	print(name, age, charisma, motivation)
 
-	def say_answear(self):
-		print(choice(npc_answear), self.name)
+	return name, age, gender, charisma, motivation
 
-	def say_bye(self):
-		print(choice(npc_final_answear), self.name)
+npcList = []
 
+for i in range(4):
+	npcList.append(Person(*createNPC()))
 
-def greeting():
-	print(choice(character_greeting))
+print('Believers', Person.believers)
 
-def recruitment():
-	print(choice(character_recruitment))
+print(npcList)
 
-def finish_phrase():
-	print(choice(character_finish_phrase))
+del npcList
