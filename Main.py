@@ -8,7 +8,7 @@ from random import randint, choice
 def createNPC():
 
 	gender = randint(0,1)
-	if gender == 0:
+	if gender == 1:
 		name = choice(npcMaleNames)
 	else:
 		name = choice(npcFemaleNames)
@@ -21,6 +21,9 @@ def createNPC():
 
 	return name, age, gender, charisma, motivation
 
+
+
+"""
 npcList = []
 
 for i in range(4):
@@ -28,6 +31,6 @@ for i in range(4):
 
 print('Believers', Person.believers)
 
-print(npcList)
+print(npcList)"""
 
-del npcList
+
