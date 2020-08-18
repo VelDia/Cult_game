@@ -1,3 +1,4 @@
 *.pyc
 /.pytest_cahce
-/.vscode\.ropeproject
+/.vscode/.ropeproject
+/.vscode
