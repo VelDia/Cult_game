@@ -1,12 +1,12 @@
 # File with NPC phrases
 
-npcMaleNames = ['John', 'Boris', 'Andrew']
-npcFemaleNames = ['Lara', 'Emma', 'Natasha']
+npcMaleNames = ['John', 'Boris', 'Andrew', 'Emmet', 'Eliot', 'Bob', 'Steve', 'Tony', 'Michel', 'Peter', 'Frank', 'George']
+npcFemaleNames = ['Lara', 'Emma', 'Natasha', 'Scarlet', 'Helen', 'Linda', 'Rachel', 'Tina', 'Sofi', 'Clara', 'Eleonor', 'Sonya']
 
-npcGreeting = ['Hello', 'Main respecturen', 'Hi MF', 'Oh, hi']
+npcGreeting = ['Hello', 'Main respecturen', 'Hi MF!', 'Oh, hi']
 
-npcPositiveAnswear = ['Yes', 'Why not, yeah', 'Ok', 'Hell yeah']
-npcNegativeAnswear = ['No', 'No! Never', 'Emmm, no', 'What?!']
+npcAnswear = ['Yes', 'Why not, yeah', 'Ok', 'Hell yeah']
+npcAnswearBad = ['No', 'No! Never', 'Emmm, no', 'What?!']
 
-npcFarewellPositive = ['Have a nice day!', 'Thanks, good bye', 'Bye', "Good bye"]
-npcFarewellNegative = ['Get hell outa here!', '*Door slaps', 'Fuck off!']
+npcFarewell = ['Have a nice day!', 'Thanks, good bye', 'Bye', "Good bye"]
+npcFarewellBad = ['Get hell outa here!', '*Door slaps*', 'Fuck off!']

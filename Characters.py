@@ -12,9 +12,10 @@ from npc_data import*
 
 class Character:
 
-	def __init__(self, name, age, money, charisma, energy, element):
+	def __init__(self, name, age, gender, money, charisma, energy, element):
 		self.name = name
 		self.age = age
+		self.gender = gender
 		self.money = money
 		self.charisma = charisma
 		self.energy = energy
@@ -24,6 +25,7 @@ class Character:
 		
 		[name] - name of character (Player choose at the beginning)
 		[age] - age of character (at the beginning equals to 21)
+		[gender] - gender of a character (0 - female or 1 - male)
 		[money] - amount of money that character have (at the beginning equals to 0)
 		[charisma] - level of charisma of character (at the beginning equals to 0)
 		[energy] - level of energy of character (at the beginning equals to 100)
@@ -40,8 +42,11 @@ class Character:
 		else:
 			print(choice(characterRecruitment))
 
-	def finish_phrase(self):
-		print(choice(characterFinishPhrase))
+	def finish_phrase(self, bad):
+		if bad:
+			print(choice(characterFinishPhraseBad))
+		else:
+			print(choice(characterFinishPhrase))
 
 
 #================================================
@@ -52,7 +57,22 @@ def GetName():
 	characterName = input("Enter your name: ")
 	return characterName
 
-MainCharacter = Character(GetName(), 21, 0, 0, 100, 0)
+def GetGender():
+	CharacterGender = input("Entere your gender: ")
+	if CharacterGender == '1':
+		CharacterGender = 1
+	else:
+		CharacterGender = 0
+	
+	return CharacterGender
+
+
+MainCharacter = Character(GetName(), 21, GetGender(), 0, 0, 100, 0)
+
+def SkipTutorial():
+	# actions with MainCharacter characteristics
+	# Add soon
+	pass
 
 #================================================
 #================================================
@@ -90,23 +110,23 @@ class NPC:
 	def __del__(self):
 		NPC.believers -= 1
 	
-	def sayHi(self):	
+	def greeting(self):	
 		print(choice(npcGreeting) + ' I\'m ' + self.name)
 
-	def answer(self, correct):
-		if correct:
-			print(choice(npcPositiveAnswear))
+	def phrase(self, bad):
+		if bad:
+			print(choice(npcAnswearBad))
 			self.motivation += randint(1, 5) # Need to add smart random  parameters
 		else:
-			print(choice(npcNegativeAnswear))
+			print(choice(npcAnswear))
 			self.motivation -= randint(1, 5) # Here too
 
-	def sayBye(self, positive):
-		if positive:
-			print(choice(npcFarewellPositive))
+	def farewell(self, bad):
+		if bad:
+			print(choice(npcFarewellBad))
 			self.motivation += randint(1, 5) # Here too
 		else:
-			print(choice(npcFarewellNegative))
+			print(choice(npcFarewell))
 			self.motivation -= randint(1, 5) # Here too
 
 

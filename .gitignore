@@ -1,3 +1,6 @@
 *.pyc
+.gitignore
 /.pytest_cahce
 /.vscode
+/Graphic
+/desktop.ini
