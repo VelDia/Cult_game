@@ -1,0 +1,28 @@
+body {
+	background-color: rgb(0, 0, 0);
+	color: azure;
+	background-image: url("/source/Village\ map.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: 'Open Sans', sans-serif;
+}
+
+p {
+	text-align: center;
+	margin: 100px 50px;
+	font-size: 30px;
+}
+
+button{
+	margin: 10px;
+	font-size: 15px;
+	background: rgb(22, 202, 103);
+	padding: 5px;
+	transition: 100ms;
+}
+
+button:hover{
+	transform: scale(1.15);
+	background: rgb(39, 226, 123);
+	transition: 100ms;
+}
