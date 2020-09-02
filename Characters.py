@@ -11,6 +11,8 @@ from npc_data import*
 
 class Character:
 
+	believers = 0
+	level = 0
 	def __init__(self, name, age, gender, money, charisma, energy, element, level, believers):
 		self.name = name
 		self.age = age
@@ -50,10 +52,10 @@ class Character:
 			print(choice(characterFinishPhrase))
 	
 	def add_believer(self):
-		Character.believers += 1
+		self.believers += 1
 
 	def level_up(self):
-		Character.level += 1
+		self.level += 1
 
 #================================================
 #			Creating Main Character
