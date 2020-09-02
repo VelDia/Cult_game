@@ -76,7 +76,7 @@ def GetGender():
 '''
 
 def GetGender():
-	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male"))
+	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male)  "))
 	return CharacterGender
 
 MainCharacter = Character(GetName(), 21, GetGender(), 0, 0, 100, 0, 0, 0)
