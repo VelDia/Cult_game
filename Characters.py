@@ -129,7 +129,7 @@ class NPC:
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
 	
-	def add_believer():
+	def add_believer(self):
 		NPC.believers +=1
 
 # Need to dislocate it
