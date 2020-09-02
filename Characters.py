@@ -1,4 +1,12 @@
 # Main Character logic
+
+	"""
+
+	Test)
+
+	"""
+
+
 # And NPC logic
 
 from random import choice, randint
