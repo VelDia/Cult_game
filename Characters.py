@@ -13,6 +13,8 @@ class Character:
 
 	believers = 0
 	level = 0
+	money = 0
+
 	def __init__(self, name, age, gender, money, charisma, energy, element, level, believers):
 		self.name = name
 		self.age = age
@@ -33,6 +35,8 @@ class Character:
 		[charisma] - level of charisma of character (at the beginning equals to 0)
 		[energy] - level of energy of character (at the beginning equals to 100)
 		[element] - element of character (0, 1, 2) == (rock, paper, scissors)
+		[level] - literally, the level of the character, which indicates how much stages the main character has gone through...
+		[believers] - the amount of people, who believe in religion of the character
 		
 		"""
 			
