@@ -116,18 +116,18 @@ class NPC:
 	def phrase(self, bad):
 		if bad:
 			print(choice(npcAnswearBad))
-			self.motivation += randint(1, 5) # Need to add smart random  parameters
+			self.motivation -= randint(1, 5) # Need to add smart random  parameters
 		else:
 			print(choice(npcAnswear))
-			self.motivation -= randint(1, 5) # Here too
+			self.motivation += randint(1, 5) # Here too
 
 	def farewell(self, bad):
 		if bad:
 			print(choice(npcFarewellBad))
-			self.motivation += randint(1, 5) # Here too
+			self.motivation -= randint(1, 5) # Here too
 		else:
 			print(choice(npcFarewell))
-			self.motivation -= randint(1, 5) # Here too
+			self.motivation += randint(1, 5) # Here too
 
 
 # Need to dislocate it
@@ -146,20 +146,20 @@ def SmartRandom(level):	# For creating appropriate NPC
 		MIN_charisma = 0
 		MAX_charisma = MainCharacter.charisma + 2
 
-		MIN_motivation = 70
-		MAX_motivation = 100
+		MIN_motivation = 50
+		MAX_motivation = 70
 	elif level == 1:	# Medium
 		MIN_charisma = MainCharacter.charisma 
 		MAX_charisma = MainCharacter.charisma + 5
 
 		MIN_motivation = 50
-		MAX_motivation = 80
+		MAX_motivation = 60
 	elif level == 2:	# Hard
 		MIN_charisma = MainCharacter.charisma + 5
 		MAX_charisma = MainCharacter.charisma + 15
 
 		MIN_motivation = 30
-		MAX_motivation = 60
+		MAX_motivation = 50
 	elif level == 3:	# Extreme
 		MIN_charisma = MainCharacter.charisma + 15
 		MAX_charisma = MainCharacter.charisma + 35
