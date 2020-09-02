@@ -94,7 +94,7 @@ class NPC:
 		self.charisma = charisma
 		self.motivation = motivation
 		self.element = element
-		NPC.believers += 1
+		#NPC.believers += 1
 		
 		"""
 		
@@ -128,7 +128,9 @@ class NPC:
 		else:
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
-
+	
+	def add_believer():
+		NPC.believers +=1
 
 # Need to dislocate it
 def SmartRandom(level):	# For creating appropriate NPC
