@@ -189,3 +189,4 @@ def SmartRandom(level):	# For creating appropriate NPC
 	return name, age, gender, charisma, motivation, element
 
 
+# Test comment
