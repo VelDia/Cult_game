@@ -11,7 +11,7 @@ from npc_data import*
 
 class Character:
 
-	def __init__(self, name, age, gender, money, charisma, energy, element):
+	def __init__(self, name, age, gender, money, charisma, energy, element, level, believers):
 		self.name = name
 		self.age = age
 		self.gender = gender
@@ -19,6 +19,8 @@ class Character:
 		self.charisma = charisma
 		self.energy = energy
 		self.element = element
+		self.level = level
+		self.believers = believers
 
 		"""
 		
@@ -46,7 +48,12 @@ class Character:
 			print(choice(characterFinishPhraseBad))
 		else:
 			print(choice(characterFinishPhrase))
+	
+	def add_believer(self):
+		Character.believers += 1
 
+	def level_up(self):
+		Character.level += 1
 
 #================================================
 #			Creating Main Character
@@ -56,17 +63,21 @@ def GetName():
 	characterName = input("Enter your name: ")
 	return characterName
 
+'''
 def GetGender():
-	CharacterGender = input("Entere your gender: ")
+	CharacterGender = input("Enter your gender: ")
 	if CharacterGender == '1':
 		CharacterGender = 1
 	else:
 		CharacterGender = 0
-	
+	return CharacterGender
+'''
+
+def GetGender():
+	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male"))
 	return CharacterGender
 
-
-MainCharacter = Character(GetName(), 21, GetGender(), 0, 0, 100, 0)
+MainCharacter = Character(GetName(), 21, GetGender(), 0, 0, 100, 0, 0, 0)
 
 def SkipTutorial():
 	# actions with MainCharacter characteristics
@@ -84,8 +95,6 @@ def SkipTutorial():
 
 class NPC:
 
-	believers = 0
-
 	def __init__(self, name, age, gender, charisma, motivation, element):
 		self.name = name
 		self.age = age
@@ -93,8 +102,7 @@ class NPC:
 		self.charisma = charisma
 		self.motivation = motivation
 		self.element = element
-		#NPC.believers += 1
-		
+
 		"""
 		
 		[name] - NPC name
@@ -105,9 +113,6 @@ class NPC:
 		[element] - element of character (0, 1, 2) == (rock, paper, scissors)
 		
 		"""
-
-	def __del__(self):
-		NPC.believers -= 1
 	
 	def greeting(self):	
 		print(choice(npcGreeting) + ' I\'m ' + self.name)
@@ -127,9 +132,6 @@ class NPC:
 		else:
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
-	
-	def add_believer(self):
-		NPC.believers +=1
 
 # Need to dislocate it
 def SmartRandom(level):	# For creating appropriate NPC
