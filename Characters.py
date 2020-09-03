@@ -15,16 +15,16 @@ class Character:
 	level = 0
 	money = 0
 
-	def __init__(self, name, age, gender, money, charisma, energy, element, level, believers):
+	def __init__(self, name, age, gender, money, charisma, energy, level, believers, picture):
 		self.name = name
 		self.age = age
 		self.gender = gender
 		self.money = money
 		self.charisma = charisma
 		self.energy = energy
-		self.element = element
 		self.level = level
 		self.believers = believers
+		self.picture = picture
 
 		"""
 		
@@ -34,7 +34,7 @@ class Character:
 		[money] - amount of money that character have (at the beginning equals to 0)
 		[charisma] - level of charisma of character (at the beginning equals to 0)
 		[energy] - level of energy of character (at the beginning equals to 100)
-		[element] - element of character (0, 1, 2) == (rock, paper, scissors)
+		#[element] - element of character (0, 1, 2) == (rock, paper, scissors)
 		[level] - literally, the level of the character, which indicates how much stages the main character has gone through...
 		[believers] - the amount of people, who believe in religion of the character
 		
@@ -83,7 +83,7 @@ def GetGender():
 	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male)  "))
 	return CharacterGender
 
-MainCharacter = Character(GetName(), 21, GetGender(), 0, 0, 100, 0, 0, 0)
+MainCharacter = Character(GetName(), 21, GetGender(), 0, 100, 0, 0, 0, 0)
 
 def SkipTutorial():
 	# actions with MainCharacter characteristics
@@ -101,13 +101,13 @@ def SkipTutorial():
 
 class NPC:
 
-	def __init__(self, name, age, gender, charisma, motivation, element):
+	def __init__(self, name, age, gender, charisma, motivation, picture):
 		self.name = name
 		self.age = age
 		self.gender = gender
 		self.charisma = charisma
 		self.motivation = motivation
-		self.element = element
+		self.picture = picture
 
 		"""
 		
@@ -116,8 +116,9 @@ class NPC:
 		[gender] - gender of NPC (smart random) (0 - female, 1 - male)
 		[charisma] - level of charisma of character (smart random)
 		[motivation] - motivation to listen to Main Character (smart random)
-		[element] - element of character (0, 1, 2) == (rock, paper, scissors)
-		
+		#[element] - element of character (0, 1, 2) == (rock, paper, scissors)
+		[picture] - the number of the picture which will be shown on the screen when the NPC is shown
+
 		"""
 	
 	def greeting(self):	
@@ -138,6 +139,23 @@ class NPC:
 		else:
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
+	
+	def get_picture(self, age, gender):
+		if gender == 0:
+			print("female") #enter/search the folder with girl`s pictures
+		elif gender == 1:
+			print("male") #enter/search the folder with boy`s pictures
+		if age < 30:
+			print("young person")
+			#find and attach the picture of the young person
+		elif age >= 30 and age <=50:
+			print("middle-aged person")
+			#find and attach the picture of the middle-aged person
+		else: 
+			#or elif age >= 50:... and then else: print("Unable to attach the picture")
+			print("old person")
+			#find and attach the picture of the old person
+
 
 # Need to dislocate it
 def SmartRandom(level):	# For creating appropriate NPC
@@ -195,3 +213,8 @@ def SmartRandom(level):	# For creating appropriate NPC
 
 	return name, age, gender, charisma, motivation, element
 
+class worshipper(NPC):
+	def __init__(self, name, age, gender, charisma, motivation, picture, new_comers_per_time, all_new_comers):
+		NPC.__init__(self, name, age, gender, charisma, motivation, picture)
+		self.new_comers_per_time = new_comers_per_time
+		self.all_new_comers = all_new_comers
