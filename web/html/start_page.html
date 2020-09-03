@@ -1,0 +1,36 @@
+<!-- Start page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/style_start_page.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="/source/heart.png">
+	<title>Cult_game</title>
+
+	<script type="text/javascript" src="/eel.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<p class="text">Hello there!</p>
+
+	<input type="text" class="input_name" name="name" maxlength="15" placeholder="Enter character name" autocomplete="off">
+
+
+	<form action="#" method="post" class="input_gender" id="input_gender">
+		<input type="radio" id="gender-Male" name="gender" value="Male" checked>
+		<label for="gender-Male"> Male </label>
+	
+		<input type="radio" id="gender-Female" name="gender" value="Female">
+		<label for="gender-Female"> Female </label>
+	</form>
+
+
+	<input type="number" class="input_age" name="age" placeholder="Enter age" min="18" max="100" autocomplete="off">
+	<input type="button" class="button_confirm" value="Confirm">
+
+	<script src = "../js/script.js"></script>
+</body>
+</html>

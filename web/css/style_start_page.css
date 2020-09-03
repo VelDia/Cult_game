@@ -1,0 +1,72 @@
+body {
+	background-color: #3d3d3d;
+	color: #eaf5ff;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+}
+
+.text {
+	font-size: 40px;
+	text-align: center;
+	margin: 50px;
+}
+
+.input_name {
+	display: block;
+	margin: 0 auto;
+	background-color: #eaf5ff;
+	padding: 10px;
+	color: #2d2d2d;
+	outline: none;
+	border-radius: 15px;
+	width: 350px;
+	font-size: 30px;
+	text-align: center;
+}
+
+form {
+	display: block;
+	margin: 20px 0px;
+	font-size: 20px;
+	
+}
+
+label {
+	cursor: pointer;
+}
+
+.input_age {
+	display: block;
+	margin: 0 auto;
+	background-color: #eaf5ff;
+	padding: 10px;
+	color: #2d2d2d;
+	outline: none;
+	border-radius: 15px;
+	width: 250px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.button_confirm {
+	border: none;
+	border-radius: 10px;
+	display: block;
+	outline: none;
+	margin: 20px auto;
+	background-color: #2d2d2d;
+	padding: 15px;
+	color: #eaf5ff;
+	text-align: center;
+	text-decoration: none;
+	font-size: 25px;
+}
+
+.button_confirm:hover {
+	background-color: #4d4d4d;
+	transform: scale(1.1);
+}
+
+.button_confirm:active {
+	background-color: #5d5d5d;
+}
