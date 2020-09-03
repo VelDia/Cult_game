@@ -214,7 +214,14 @@ def SmartRandom(level):	# For creating appropriate NPC
 	return name, age, gender, charisma, motivation, element
 
 class worshipper(NPC):
-	def __init__(self, name, age, gender, charisma, motivation, picture, new_comers_per_time, all_new_comers):
+
+	def __init__(self, name, age, gender, charisma, motivation, picture, newcomers_per_time, all_newcomers):
 		NPC.__init__(self, name, age, gender, charisma, motivation, picture)
-		self.new_comers_per_time = new_comers_per_time
-		self.all_new_comers = all_new_comers
+		self.newcomers_per_time = newcomers_per_time
+		self.all_newcomers = all_newcomers
+
+		'''
+		[newcomers_per_time] - the amount of people the worshipper assigns per some time
+		[all_newcomers] - the amount of people the worshipper has ever assigned
+		'''
+		
