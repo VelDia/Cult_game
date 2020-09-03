@@ -1,6 +1,6 @@
 # Tutorial part
 
-from Characters import*
+from Characters import NPC, MainCharacter
 from random import randint, choice
 
 #================================================

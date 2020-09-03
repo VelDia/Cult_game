@@ -11,6 +11,10 @@ from npc_data import*
 
 class Character:
 
+	believers = 0
+	level = 0
+	money = 0
+
 	def __init__(self, name, age, gender, money, charisma, energy, element, level, believers):
 		self.name = name
 		self.age = age
@@ -31,6 +35,8 @@ class Character:
 		[charisma] - level of charisma of character (at the beginning equals to 0)
 		[energy] - level of energy of character (at the beginning equals to 100)
 		[element] - element of character (0, 1, 2) == (rock, paper, scissors)
+		[level] - literally, the level of the character, which indicates how much stages the main character has gone through...
+		[believers] - the amount of people, who believe in religion of the character
 		
 		"""
 			
@@ -50,10 +56,10 @@ class Character:
 			print(choice(characterFinishPhrase))
 	
 	def add_believer(self):
-		Character.believers += 1
+		self.believers += 1
 
 	def level_up(self):
-		Character.level += 1
+		self.level += 1
 
 #================================================
 #			Creating Main Character
@@ -74,7 +80,7 @@ def GetGender():
 '''
 
 def GetGender():
-	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male"))
+	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male)  "))
 	return CharacterGender
 
 MainCharacter = Character(GetName(), 21, GetGender(), 0, 0, 100, 0, 0, 0)
