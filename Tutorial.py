@@ -1,15 +1,15 @@
 # Tutorial part
 
-from Characters import NPC, MainCharacter
-from random import randint, choice
+from Characters import NPC, MainCharacter, Character
+#from random import randint, choice
 
 #================================================
 #				 Tutorial NPC
 #================================================
 
 npc1 = NPC('Andrew', 27, 1, 2, 50, 0)
-npc2 = NPC('Bob', 32, 1, 2, 50, 1)
-npc3 = NPC('Alina', 20, 0, 3, 50, 2)
+npc2 = NPC('Bob', 32, 1, 2, 50, 0)
+npc3 = NPC('Alina', 20, 0, 3, 50, 0)
 
 #================================================
 #================================================
@@ -25,25 +25,26 @@ def FirstVisit():
 	npc1.greeting()
 
 	while True:
-		answear = input('Enter your action')
+
+		answear = bool(input('Enter your action'))
 
 		if answear == 'q':
 			answear = input('Enter your last action')
 			if answear == '0':
-				MainCharacter.finish_phrase(1)
+				MainCharacter.finish_phrase(True)
 				npc1.farewell(answear)
 
 			if answear == '1':
-				MainCharacter.finish_phrase(0)
+				MainCharacter.finish_phrase(False)
 				npc1.farewell(answear)
 			break
 		else:
 			if answear == '0':
-				MainCharacter.recruitment(1)
+				MainCharacter.recruitment(True)
 				npc1.phrase(answear)
 
 			if answear == '1':
-				MainCharacter.recruitment(0)
+				MainCharacter.recruitment(False)
 				npc1.phrase(answear)
 
 	if npc1.motivation > 90:
