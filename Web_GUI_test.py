@@ -8,7 +8,7 @@ def get_info(name, gender, age):
 	print("Age = " + str(age))
 
 try:
-	eel.start('html/start_page.html', host='localhost', size=(500, 600))
+	eel.start('html/start_page.html', host='localhost', size=(500, 500))
 except:
 	print("End of program")
 

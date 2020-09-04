@@ -17,7 +17,8 @@ function getRadioVal(form, name) {
 
 $(function(){                    
 	$(".button_confirm").click(function(){
-		eel.get_info($(".input_name").val(), getRadioVal( document.getElementById('input_gender'), 'gender' ), $(".input_age").val());
+        eel.get_info($(".input_name").val(), getRadioVal( document.getElementById('input_gender'), 'gender' ), $(".input_age").val());
+        window.location = "../html/main.html";
 	});
 });
 
