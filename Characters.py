@@ -5,7 +5,7 @@ from random import choice, randint
 from Tutorial import FirstVisit, npc1
 from character_data import*
 from npc_data import*
-
+import time, threading
 #================================================
 #			  Main Character logic
 #================================================
@@ -31,6 +31,22 @@ class People:
 		else:
 			print('Error: wrong gender initialization...')
 		return strGender
+
+	def get_picture(self, age, gender):
+		if gender == 0:
+			print("female") #enter/search the folder with girl`s pictures
+		elif gender == 1:
+			print("male") #enter/search the folder with boy`s pictures
+		if age < 30:
+			print("young person")
+			#find and attach the picture of the young person
+		elif age >= 30 and age <=50:
+			print("middle-aged person")
+			#find and attach the picture of the middle-aged person
+		else: 
+			#or elif age >= 50:... and then else: print("Unable to attach the picture")
+			print("old person")
+			#find and attach the picture of the old person
 
 class Character(People):
 
@@ -92,7 +108,7 @@ class Character(People):
 def aTutorial():
 
 	global MainCharacter
-	MainCharacter = Character(Character.GetName(Character), 21, Character.GetGender(Character), 0, 100, 0, 0, 0, 0)
+	MainCharacter = Character(Character.GetName(Character), 21, Character.GetGender(Character), 0, 100, 0, 0, 0, Character.get_picture(Character, 21, Character.GetGender(Character)))
 	FirstVisit()
 
 def SkipTutorial():
@@ -150,21 +166,7 @@ class NPC(People):
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
 	
-	def get_picture(self, age, gender):
-		if gender == 0:
-			print("female") #enter/search the folder with girl`s pictures
-		elif gender == 1:
-			print("male") #enter/search the folder with boy`s pictures
-		if age < 30:
-			print("young person")
-			#find and attach the picture of the young person
-		elif age >= 30 and age <=50:
-			print("middle-aged person")
-			#find and attach the picture of the middle-aged person
-		else: 
-			#or elif age >= 50:... and then else: print("Unable to attach the picture")
-			print("old person")
-			#find and attach the picture of the old person
+	
 
 
 # Need to dislocate it
@@ -218,24 +220,30 @@ def SmartRandom(level):	# For creating appropriate NPC
 	gender = randint(0, 1)
 	charisma = randint(MIN_charisma, MAX_charisma)
 	motivation = randint(MIN_motivation, MAX_motivation)
-	element = randint(0, 2)	
+	#element = randint(0, 2)	
 
 	if gender == 0:
 		name = choice(npcFemaleNames)
 	else:
 		name = choice(npcMaleNames)
 
-	return name, age, gender, charisma, motivation, element
+	return name, age, gender, charisma, motivation
 
 class worshipper(People):
 
 	def __init__(self, name, age, gender, charisma, motivation, picture, newcomers_per_time, all_newcomers):
 		NPC.__init__(self, name, age, gender, charisma, motivation, picture)
 		self.newcomers_per_time = newcomers_per_time
-		self.all_newcomers = all_newcomers
+		self.all_newcomers = all_newcomers = 0
 
 		'''
 		[newcomers_per_time] - the amount of people the worshipper assigns per some time
 		[all_newcomers] - the amount of people the worshipper has ever assigned
 		'''
+
+	def autoRecruitment(self):
+		self.all_newcomers += self.newcomers_per_time
+		print(str(self.all_newcomers) + str(self.newcomers_per_time))
+		threading.Timer(10, self.autoRecruitment).start()
+
 aTutorial()
