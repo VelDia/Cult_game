@@ -2,14 +2,37 @@
 # And NPC logic
 
 from random import choice, randint
+from Tutorial import FirstVisit, npc1
 from character_data import*
 from npc_data import*
 
 #================================================
 #			  Main Character logic
 #================================================
+class People:
+	def __init__(self, name, gender, age, picture):
+		self.name = name
+		self.gender = gender
+		self.age = age
+		self.picture = picture
 
-class Character:
+	def GetName(self):
+		Name = input("Enter character name: ")
+		return Name
+	
+	def GetGender(self):
+		Gender = int(input("Enter your gender: (\"0\" for female, \"1\" for male, \"9\" for a random gender)  "))
+		if Gender == 9:
+			Gender = randint(0,1)
+		if Gender == 0:
+			strGender = 'female'
+		elif Gender == 1:
+			strGender = 'male'	
+		else:
+			print('Error: wrong gender initialization...')
+		return strGender
+
+class Character(People):
 
 	believers = 0
 	level = 0
@@ -39,18 +62,19 @@ class Character:
 		[believers] - the amount of people, who believe in religion of the character
 		
 		"""
+	
 			
 	def greeting(self):
 		print(choice(characterGreeting))
 
 	def recruitment(self, bad):
-		if bad:
+		if bad == True:
 			print(choice(characterRecruitmentBad))
 		else:
 			print(choice(characterRecruitment))
 
 	def finish_phrase(self, bad):
-		if bad:
+		if bad == True:
 			print(choice(characterFinishPhraseBad))
 		else:
 			print(choice(characterFinishPhrase))
@@ -65,25 +89,11 @@ class Character:
 #			Creating Main Character
 #================================================
 
-def GetName():
-	characterName = input("Enter your name: ")
-	return characterName
+def aTutorial():
 
-'''
-def GetGender():
-	CharacterGender = input("Enter your gender: ")
-	if CharacterGender == '1':
-		CharacterGender = 1
-	else:
-		CharacterGender = 0
-	return CharacterGender
-'''
-
-def GetGender():
-	CharacterGender = int(input("Enter your gender: (\"0\" for female, \"1\" for male)  "))
-	return CharacterGender
-
-MainCharacter = Character(GetName(), 21, GetGender(), 0, 100, 0, 0, 0, 0)
+	global MainCharacter
+	MainCharacter = Character(Character.GetName(Character), 21, Character.GetGender(Character), 0, 100, 0, 0, 0, 0)
+	FirstVisit()
 
 def SkipTutorial():
 	# actions with MainCharacter characteristics
@@ -93,13 +103,13 @@ def SkipTutorial():
 #================================================
 #================================================
 
-
+MainCharacter = Character('Default name', 21, 0, 0, 50, 100, 1, 0, 0)
 
 #================================================
 #					NPC logic
 #================================================
 
-class NPC:
+class NPC(People):
 
 	def __init__(self, name, age, gender, charisma, motivation, picture):
 		self.name = name
@@ -125,7 +135,7 @@ class NPC:
 		print(choice(npcGreeting) + ' I\'m ' + self.name)
 
 	def phrase(self, bad):
-		if bad:
+		if bad == True:
 			print(choice(npcAnswearBad))
 			self.motivation -= randint(1, 5) # Need to add smart random  parameters
 		else:
@@ -133,7 +143,7 @@ class NPC:
 			self.motivation += randint(1, 5) # Here too
 
 	def farewell(self, bad):
-		if bad:
+		if bad == True:
 			print(choice(npcFarewellBad))
 			self.motivation -= randint(1, 5) # Here too
 		else:
@@ -175,24 +185,28 @@ def SmartRandom(level):	# For creating appropriate NPC
 
 		MIN_motivation = 50
 		MAX_motivation = 70
+
 	elif level == 1:	# Medium
 		MIN_charisma = MainCharacter.charisma 
 		MAX_charisma = MainCharacter.charisma + 5
 
 		MIN_motivation = 50
 		MAX_motivation = 60
+
 	elif level == 2:	# Hard
 		MIN_charisma = MainCharacter.charisma + 5
 		MAX_charisma = MainCharacter.charisma + 15
 
 		MIN_motivation = 30
 		MAX_motivation = 50
+
 	elif level == 3:	# Extreme
 		MIN_charisma = MainCharacter.charisma + 15
 		MAX_charisma = MainCharacter.charisma + 35
 
 		MIN_motivation = 20
 		MAX_motivation = 40
+
 	elif level == 4:	# Unreal
 		MIN_charisma = MainCharacter.charisma + 35
 		MAX_charisma = MainCharacter.charisma + 65
@@ -213,7 +227,7 @@ def SmartRandom(level):	# For creating appropriate NPC
 
 	return name, age, gender, charisma, motivation, element
 
-class worshipper(NPC):
+class worshipper(People):
 
 	def __init__(self, name, age, gender, charisma, motivation, picture, newcomers_per_time, all_newcomers):
 		NPC.__init__(self, name, age, gender, charisma, motivation, picture)
@@ -224,4 +238,4 @@ class worshipper(NPC):
 		[newcomers_per_time] - the amount of people the worshipper assigns per some time
 		[all_newcomers] - the amount of people the worshipper has ever assigned
 		'''
-		
+aTutorial()
