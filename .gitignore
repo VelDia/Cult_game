@@ -1,5 +1,6 @@
 *.pyc
 .gitignore
+*.docx
 /.pytest_cahce
 /.vscode
 /Graphic
