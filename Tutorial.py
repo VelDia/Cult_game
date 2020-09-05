@@ -7,9 +7,9 @@ from Characters import NPC, MainCharacter, Character
 #				 Tutorial NPC
 #================================================
 
-npc1 = NPC('Andrew', 27, 1, 2, 50, 0)
-npc2 = NPC('Bob', 32, 1, 2, 50, 0)
-npc3 = NPC('Alina', 20, 0, 3, 50, 0)
+npc1 = NPC('Andrew', 27, 1, 50, 0)
+npc2 = NPC('Bob', 32, 1, 50, 0)
+npc3 = NPC('Alina', 20, 0, 50, 0)
 
 #================================================
 #================================================
