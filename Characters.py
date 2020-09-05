@@ -55,9 +55,7 @@ class Character(People):
 	money = 0
 
 	def __init__(self, name, age, gender, money, charisma, energy, level, believers, picture):
-		self.name = name
-		self.age = age
-		self.gender = gender
+		People.__init__(self, name, gender, age, picture)
 		self.money = money
 		self.charisma = charisma
 		self.energy = energy
@@ -104,12 +102,13 @@ class Character(People):
 #================================================
 #			Creating Main Character
 #================================================
-
+'''
 def aTutorial():
 
 	global MainCharacter
 	MainCharacter = Character(Character.GetName(Character), 21, Character.GetGender(Character), 0, 100, 0, 0, 0, Character.get_picture(Character, 21, Character.GetGender(Character)))
 	FirstVisit()
+'''
 
 def SkipTutorial():
 	# actions with MainCharacter characteristics
@@ -127,13 +126,9 @@ MainCharacter = Character('Default name', 21, 0, 0, 50, 100, 1, 0, 0)
 
 class NPC(People):
 
-	def __init__(self, name, age, gender, charisma, motivation, picture):
-		self.name = name
-		self.age = age
-		self.gender = gender
-		self.charisma = charisma
+	def __init__(self, name, age, gender, motivation, picture):
+		People.__init__(self, name, gender, age, picture)
 		self.motivation = motivation
-		self.picture = picture
 
 		"""
 		
@@ -166,8 +161,6 @@ class NPC(People):
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
 	
-	
-
 
 # Need to dislocate it
 def SmartRandom(level):	# For creating appropriate NPC
@@ -219,8 +212,7 @@ def SmartRandom(level):	# For creating appropriate NPC
 	age = randint(18, 80)
 	gender = randint(0, 1)
 	charisma = randint(MIN_charisma, MAX_charisma)
-	motivation = randint(MIN_motivation, MAX_motivation)
-	#element = randint(0, 2)	
+	motivation = randint(MIN_motivation, MAX_motivation)	
 
 	if gender == 0:
 		name = choice(npcFemaleNames)
@@ -231,19 +223,26 @@ def SmartRandom(level):	# For creating appropriate NPC
 
 class worshipper(People):
 
-	def __init__(self, name, age, gender, charisma, motivation, picture, newcomers_per_time, all_newcomers):
-		NPC.__init__(self, name, age, gender, charisma, motivation, picture)
-		self.newcomers_per_time = newcomers_per_time
-		self.all_newcomers = all_newcomers = 0
+	def __init__(self, name, age, gender, charisma, motivation, picture, newcomers_per_time, all_newcomers = 0):
+		People.__init__(self, name, gender, age, picture)
+		self.charisma = charisma
+		self.newcomers_per_time = newcomers_per_time 
+		self.all_newcomers = all_newcomers
 
 		'''
-		[newcomers_per_time] - the amount of people the worshipper assigns per some time
+
+		[charisma] - the koeficient of successful recruition (1 to 10)
+		[newcomers_per_time] - the amount of people the worshipper assigns per some time (initially 1 to 10)
 		[all_newcomers] - the amount of people the worshipper has ever assigned
+		
 		'''
 
 	def autoRecruitment(self):
-		self.all_newcomers += self.newcomers_per_time
-		print(str(self.all_newcomers) + str(self.newcomers_per_time))
+		self.all_newcomers += self.charisma * self.newcomers_per_time
+		print(str(self.name) + ' has already recrited ' + str(int(self.all_newcomers)) + ' believers and has just added +' + str(self.newcomers_per_time * self.charisma))
 		threading.Timer(10, self.autoRecruitment).start()
 
-aTutorial()
+#aTutorial()
+
+w1 = worshipper('John', 21, 1, 7, 100, 0, 1)
+w1.autoRecruitment()
