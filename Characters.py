@@ -83,9 +83,9 @@ class Character(People):
 
 	def recruitment(self, bad):
 		if bad == True:
-			print(choice(characterRecruitmentBad))
+			print(choice(characterRecruitmentSoftBad))
 		else:
-			print(choice(characterRecruitment))
+			print(choice(characterRecruitmentSoft))
 
 	def finish_phrase(self, bad):
 		if bad == True:
@@ -152,6 +152,16 @@ class NPC(People):
 		else:
 			print(choice(npcAnswear))
 			self.motivation += randint(1, 5) # Here too
+
+	def hardphrase(self, bad):
+		if bad == True:
+			print(choice(npcAnswearBad))
+			self.motivation -= randint(1, 5)
+		else:
+			print(choice(npcAnswear))
+			self.motivation += randint(1, 5)
+
+
 
 	def farewell(self, bad):
 		if bad == True:

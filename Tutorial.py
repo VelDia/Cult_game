@@ -25,7 +25,6 @@ def FirstVisit():
 	npc1.greeting()
 
 	while True:
-
 		answear = bool(input('Enter your action'))
 
 		if answear == 'q':
@@ -51,9 +50,14 @@ def FirstVisit():
 		print('Perfect you have first member in your cult!')
 	else:
 		print('Damn! He\'s so strong try harder!!!')
-		FirstVisit()
+		#FirstVisit()
 
+
+def Visit():
+	MainCharacter.greeting()
+	npc1.greeting()
 	
+
 def SecondVisit():
 	MainCharacter.greeting()
 	npc2.greeting()
