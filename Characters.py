@@ -131,7 +131,6 @@ class NPC(People):
 		self.motivation = motivation
 
 		"""
-		
 		[name] - NPC name
 		[age] - NPC age (from 18 to 80)
 		[gender] - gender of NPC (smart random) (0 - female, 1 - male)
