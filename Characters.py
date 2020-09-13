@@ -2,8 +2,8 @@
 # And NPC logic
 
 from random import choice, randint
-from Tutorial import FirstVisit, npc1
-from character_data import*
+#from Tutorial import Visit
+from character_data import characterGreeting
 from npc_data import*
 import time, threading
 #================================================
@@ -81,18 +81,29 @@ class Character(People):
 	def greeting(self):
 		print(choice(characterGreeting))
 
+	def recruitment(self, ListOfPhrases, ListOfPhrasesBad, bad):
+		print('1.',choice(ListOfPhrases))
+		print('2.',choice(ListOfPhrasesBad))
+		answ = input('Choose the answer: ')
+		if answ == 1:
+			bad = False
+		if answ == 2:
+			bad = True
+		return bad
+	'''
 	def recruitment(self, bad):
 		if bad == True:
 			print(choice(characterRecruitmentSoftBad))
 		else:
 			print(choice(characterRecruitmentSoft))
 
+
 	def finish_phrase(self, bad):
 		if bad == True:
 			print(choice(characterFinishPhraseBad))
 		else:
 			print(choice(characterFinishPhrase))
-	
+	'''	
 	def add_believer(self):
 		self.believers += 1
 
@@ -104,10 +115,9 @@ class Character(People):
 #================================================
 '''
 def aTutorial():
-
 	global MainCharacter
 	MainCharacter = Character(Character.GetName(Character), 21, Character.GetGender(Character), 0, 100, 0, 0, 0, Character.get_picture(Character, 21, Character.GetGender(Character)))
-	FirstVisit()
+	Visit()
 '''
 
 def SkipTutorial():
@@ -147,19 +157,10 @@ class NPC(People):
 	def phrase(self, bad):
 		if bad == True:
 			print(choice(npcAnswearBad))
-			self.motivation -= randint(1, 5) # Need to add smart random  parameters
+			self.motivation -= randint(5, 10) # Need to add smart random  parameters
 		else:
 			print(choice(npcAnswear))
-			self.motivation += randint(1, 5) # Here too
-
-	def hardphrase(self, bad):
-		if bad == True:
-			print(choice(npcAnswearBad))
-			self.motivation -= randint(1, 5)
-		else:
-			print(choice(npcAnswear))
-			self.motivation += randint(1, 5)
-
+			self.motivation += randint(5, 10) # Here too
 
 
 	def farewell(self, bad):
@@ -170,6 +171,11 @@ class NPC(People):
 			print(choice(npcFarewell))
 			self.motivation += randint(1, 5) # Here too
 	
+	def showStats(self):
+		print('Name:', self.name)
+		print('Age:', self.age)
+		print('Motivation:', self.motivation)
+
 
 # Need to dislocate it
 def SmartRandom(level):	# For creating appropriate NPC
@@ -253,5 +259,5 @@ class worshipper(People):
 
 #aTutorial()
 
-w1 = worshipper('John', 21, 1, 7, 100, 0, 1)
-w1.autoRecruitment()
+#w1 = worshipper('John', 21, 1, 7, 100, 0, 1)
+#w1.autoRecruitment()

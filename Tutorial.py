@@ -1,6 +1,7 @@
 # Tutorial part
 
-from Characters import NPC, MainCharacter, Character
+from Characters import People, NPC, MainCharacter, Character
+from character_data import*
 #from random import randint, choice
 
 #================================================
@@ -19,7 +20,7 @@ npc3 = NPC('Alina', 20, 0, 50, 0)
 #================================================
 #				 First visit
 #================================================
-
+'''
 def FirstVisit():
 	MainCharacter.greeting()
 	npc1.greeting()
@@ -51,13 +52,33 @@ def FirstVisit():
 	else:
 		print('Damn! He\'s so strong try harder!!!')
 		#FirstVisit()
-
+'''
 
 def Visit():
 	MainCharacter.greeting()
 	npc1.greeting()
-	
-
+	npc1.showStats()
+	#bool bad1 = False, bad2 = False, bad3 = False
+	bad1 = MainCharacter.recruitment(characterRecruitmentSoft,characterRecruitmentSoftBad, bad1)
+	npc1.phrase(bad1)
+	npc1.showStats()
+	bad2 = MainCharacter.recruitment(characterRecruitmentHard, characterRecruitmentHardBad, bad2)
+	npc1.phrase(bad2)
+	npc1.showStats()
+	bad3 = MainCharacter.recruitment(characterFinishPhrase, characterFinishPhraseBad, bad3)
+	npc1.farewell(bad3)
+	npc1.showStats()
+	if npc1.motivation <= 50:
+		print('You lost... The person didn`t believe you.')
+	elif npc1.motivation > 50 and npc1.motivation < 90:
+		print('Congrats, you`ve got a new believer.')
+		MainCharacter.add_believer()
+	elif npc1.motivation >= 90:
+		print('Heh, you were good enough to get a worshipper.')
+		MainCharacter.add_believer()
+	print('The amount of believers:', MainCharacter.believers)
+		
+'''
 def SecondVisit():
 	MainCharacter.greeting()
 	npc2.greeting()
@@ -123,3 +144,7 @@ def ThirdVisit():
 	else:
 		print('Damn! He\'s so strong try harder!!!')
 		ThirdVisit()
+
+'''
+
+Visit()
