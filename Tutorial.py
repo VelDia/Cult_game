@@ -59,13 +59,13 @@ def Visit():
 	npc1.greeting()
 	npc1.showStats()
 	#bool bad1 = False, bad2 = False, bad3 = False
-	bad1 = MainCharacter.recruitment(characterRecruitmentSoft,characterRecruitmentSoftBad, bad1)
+	bad1 = MainCharacter.recruitment(characterRecruitmentSoft,characterRecruitmentSoftBad)
 	npc1.phrase(bad1)
 	npc1.showStats()
-	bad2 = MainCharacter.recruitment(characterRecruitmentHard, characterRecruitmentHardBad, bad2)
+	bad2 = MainCharacter.recruitment(characterRecruitmentHard, characterRecruitmentHardBad)
 	npc1.phrase(bad2)
 	npc1.showStats()
-	bad3 = MainCharacter.recruitment(characterFinishPhrase, characterFinishPhraseBad, bad3)
+	bad3 = MainCharacter.recruitment(characterFinishPhrase, characterFinishPhraseBad)
 	npc1.farewell(bad3)
 	npc1.showStats()
 	if npc1.motivation <= 50:

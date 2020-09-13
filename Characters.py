@@ -81,14 +81,16 @@ class Character(People):
 	def greeting(self):
 		print(choice(characterGreeting))
 
-	def recruitment(self, ListOfPhrases, ListOfPhrasesBad, bad):
+	def recruitment(self, ListOfPhrases, ListOfPhrasesBad):
 		print('1.',choice(ListOfPhrases))
 		print('2.',choice(ListOfPhrasesBad))
-		answ = input('Choose the answer: ')
+		answ = int(input('Choose the answer: '))
 		if answ == 1:
 			bad = False
-		if answ == 2:
+		elif answ == 2:
 			bad = True
+		else:
+			print('Something went wrong try again')
 		return bad
 	'''
 	def recruitment(self, bad):
